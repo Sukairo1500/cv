@@ -6145,25 +6145,7 @@ function getMessage(chat_id, message_id,cb)
     }, cb, nil)
     end
 ---
-if text:match("^عطه بوسه$") or text:match("^عطه بعد$") or text:match("^بوسه$") or text:match("^بوسه بعد$") then
-    function bosh(extra, result, success)
-    if tonumber(result.sender_user_id_) == tonumber(bot_id) then 
-    faederdx(msg.chat_id_, msg.id_, 1, ' انت فهمني كيف ابوس نفسي وازهل', 1, 'md')
-    return false  
-    end  
-    if tonumber(result.sender_user_id_) == tonumber(bot_owner) then  
-    faederdx(msg.chat_id_, msg.id_, 1, 'اطلق بوسه لاطلق مطور @'..SudoFaeder, 1, 'html')
-    return false
-    end 
-    local faeder = "تم ي عيني " 
-    faederdx(msg.chat_id_, msg.id_, 1,faeder, 1, 'md') 
-    local faeder = {"ابي اعطيك بوسه بس اخاف تزرقها","امممواح يعمري","ختفو "} 
-    faederdx(msg.chat_id_, result.id_, 1,''..faeder[math.random(#faeder)]..'', 1, 'md') 
-    end 
-    if tonumber(msg.reply_to_message_id_) == 0 then
-    else 
-    getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),bosh)   
-    end end
+
 -------
     if text:match("^اكسر عليه$") or text:match("^اكسر$") or text:match("^كسره$") or text:match("^اكسر عليه مره ثانيه$") then
         function bosh(extra, result, success)
