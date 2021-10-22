@@ -1926,7 +1926,7 @@ redis:set(bot_id.."Eqap:Command:Reids:Group:End"..msg.chat_id_..":"..msg.sender_
 return false
 end
 ------------------------------------------------------------------------------------------------------------
-if MsgText[1]=="اضف رد عشوائي" and msg.GroupActive then
+if text=="اضف رد عشوائي" and msg.GroupActive then
 if not msg.Director then return "⇠ هذا الامر يخص ( المطور,المالك,المدير ) بس  \n" end
 redis:setex(boss..'addrdRandom1:'..msg.chat_id_..msg.sender_user_id_,1400,true) 
 redis:del(boss..'replay1Random'..msg.chat_id_..msg.sender_user_id_)
@@ -1934,14 +1934,14 @@ return "⇠ تمام, الحين ارسل كلمه الرد للعشوائي"
 end
 
 
-if MsgText[1]== "مسح رد عشوائي" then
+if text == "مسح رد عشوائي" then
 if not msg.Director then return "⇠ هذا الامر يخص ( المطور,المالك,المدير ) بس  \n" end
 redis:setex(boss..':DelrdRandom:'..msg.chat_id_..msg.sender_user_id_,300,true)
 return "⇠ تمام عيني\n⇠ الحين ارسل الرد العشوائي لمسحه "
 end
 
 
-if MsgText[1] == "مسح الردود العشوائيه" then
+if text == "مسح الردود العشوائيه" then
 if not msg.Director then return "⇠ هذا الامر يخص ( المطور,المالك,المدير ) بس  " end
 local AlRdod = redis:smembers(boss..':KlmatRRandom:'..msg.chat_id_) 
 if #AlRdod == 0 then return "⇠ الردود العشوائيه محذوفه بالفعل " end
@@ -1951,7 +1951,7 @@ redis:del(boss..':KlmatRRandom:'..msg.chat_id_)
 return "⇠ اهلا عيني "..msg.TheRankCmd.."  \n⇠ ابشر مسحت جميع الردود العشوائيه "
 end
 
-if MsgText[1] == "الردود العشوائيه" then
+if text == "الردود العشوائيه" then
 if not msg.Director then return "⇠ هذا الامر يخص ( المطور,المالك,المدير ) بس  " end
 message = "⇠ الردود العشـوائيه :\n\n"
 local AlRdod = redis:smembers(boss..':KlmatRRandom:'..msg.chat_id_) 
@@ -1966,7 +1966,7 @@ end
 return message.."\n"
 end
 
-if MsgText[1]=="اضف رد عشوائي عام" then
+if text=="اضف رد عشوائي عام" then
 if not msg.SudoUser then return "⇠ هذا الامر يخص ( المطور ) بس  \n" end
 redis:setex(boss..'addrdRandom1Public:'..msg.chat_id_..msg.sender_user_id_,1400,true) 
 redis:del(boss..'replay1RandomPublic'..msg.chat_id_..msg.sender_user_id_)
@@ -1974,13 +1974,13 @@ return "⇠ تمام, الحين ارسل كلمه الرد للعشوائي ا�
 end
 
 
-if MsgText[1]== "مسح رد عشوائي عام" then
+if text == "مسح رد عشوائي عام" then
 if not msg.SudoUser then return "⇠ هذا الامر يخص ( المطور ) بس  \n" end
 redis:setex(boss..':DelrdRandomPublic:'..msg.chat_id_..msg.sender_user_id_,300,true)
 return "⇠ تمام عيني\n⇠ الحين ارسل الرد العشوائي العام لمسحه"
 end
 
-if MsgText[1] == "مسح الردود العشوائيه العامه" then
+if text == "مسح الردود العشوائيه العامه" then
 if not msg.SudoUser then return "⇠ هذا الامر يخص ( المطور ) بس  \n" end
 local AlRdod = redis:smembers(boss..':KlmatRRandom:') 
 if #AlRdod == 0 then return "⇠ الردود العشوائيه محذوفه بالفعل " end
@@ -1989,7 +1989,7 @@ redis:del(boss..':KlmatRRandom:')
 return "⇠ اهلا عيني "..msg.TheRankCmd.."  \n⇠ ابشر مسحت جميع الردود العشوائيه "
 end
 
-if MsgText[1] == "الردود العشوائيه العام" then
+if text == "الردود العشوائيه العام" then
 if not msg.SudoUser then return "⇠ هذا الامر يخص ( المطور ) بس  \n" end
 message = "-التعليقات العشـوائيه العام :\n\n"
 local AlRdod = redis:smembers(boss..':KlmatRRandom:') 
